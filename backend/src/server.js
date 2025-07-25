@@ -15,6 +15,10 @@ const PORT = process.env.PORT;
 
 // middleware
 
+// during production, this is essential — without this, Express will ignore the x-forwarded-for header that Render sets, and fallback to internal IPs like ::1.
+app.set('trust proxy', true);
+
+
 // the cors function can also have no arguments, that basically allows requests all ips / domains
 // only needed if a service is requested from another domain or ip
 
